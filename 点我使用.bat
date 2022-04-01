@@ -45,7 +45,7 @@ for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     if "!Config!"=="ADBMODE1" cls & goto main2
 )
 :main
-title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
+title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
 color    3F
 echo 欢迎使用华为儿童手表ADB工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -57,7 +57,7 @@ adb.exe devices
 pause
 cls & goto input
 :main2
-title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
+title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
 color    3F
 echo 欢迎使用华为儿童手表ADB工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -69,7 +69,7 @@ adb.exe devices
 pause
 cls & goto input
 :input
-title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
+title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
 set /p "num=[1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI   [6]查看设备状态   [7]安装应用   [8]卸载应用   [9]禁用/启用应用   [10]提取当前应用  [11]替换铃声  [12]重启工具箱  [20]工具箱设置 请输入数字然后按下回车键：
 if "%num%"=="1" cls & goto 1
 if "%num%"=="2" cls & goto 2
@@ -234,7 +234,7 @@ for /f "tokens=2" %%i in (%name%\stats\ba.txt) do (
     set ba=%%i
     echo 当前电量为:!ba!
 )
-title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
+title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
 echo 按任意键返回主界面
 pause>nul
 cls & goto input
