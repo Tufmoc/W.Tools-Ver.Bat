@@ -4,6 +4,7 @@ title 检索资源ing...
 mode con cols=140 lines=30
 set name=Resources
 set soft=Application
+taskkill /f /IM adb.exe
 if exist %name% (echo 存在资源文件夹!) else (echo 不存在资源文件夹!正在创建资源文件夹!&7z.exe x resources.zip)
 if exist %name%\adb\ (echo 存在ADB文件夹!) else (echo 不存在ADB文件夹!正在释放资源!&md %name%\adb&7z.exe x adb.zip -o%name%\adb)
 if exist %name%\adb\ (echo 存在ADB文件夹!) else (echo 不存在ADB文件夹!正在释放资源!&md %name%\adb&7z.exe x adb.zip -o%name%\adb)
@@ -13,34 +14,63 @@ if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释
 if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释放资源!&md %name%\stats&7z.exe x stats.zip -o%name%\stats)
 if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
 if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
-if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Cloudmusic.zip?raw=true)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Cloudmusic.z01?raw=true)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Cloudmusic.z02?raw=true)&(ren *."zip@raw=true" *.zip)&(ren *."z01@raw=true" *.z01)&(ren *."z02@raw=true" *.z02)&(7z.exe x Cloudmusic.zip -o%name%\apk)&(move *.apk %name%\apk\)&(del Cloudmusic.zip)&(del Cloudmusic.z01)&(del Cloudmusic.z02)
-if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Cloudmusic.zip?raw=true)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Cloudmusic.z01?raw=true)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Cloudmusic.z02?raw=true)&(ren *."zip@raw=true" *.zip)&(ren *."z01@raw=true" *.z01)&(ren *."z02@raw=true" *.z02)&(7z.exe x Cloudmusic.zip -o%name%\apk)&(move *.apk %name%\apk\)&(del Cloudmusic.zip)&(del Cloudmusic.z01)&(del Cloudmusic.z02)
-if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Bili.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Bili.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Lawnchair.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Lawnchair.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/QQ.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/QQ.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/sougouinput.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/sougouinput.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/VAeXposed.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/VAeXposed.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Vedio.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(wget https://raw.staticdn.net/Tufmoc/Garbage/blob/main/Vedio.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.zip?raw=true)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.z01?raw=true)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.z02?raw=true)&(ren *."zip@raw=true" *.zip)&(ren *."z01@raw=true" *.z01)&(ren *."z02@raw=true" *.z02)&(7z.exe x Cloudmusic.zip -o%name%\apk)&(move *.apk %name%\apk\)&(del Cloudmusic.zip)&(del Cloudmusic.z01)&(del Cloudmusic.z02)
+if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.zip?raw=true)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.z01?raw=true)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.z02?raw=true)&(ren *."zip@raw=true" *.zip)&(ren *."z01@raw=true" *.z01)&(ren *."z02@raw=true" *.z02)&(7z.exe x Cloudmusic.zip -o%name%\apk)&(move *.apk %name%\apk\)&(del Cloudmusic.zip)&(del Cloudmusic.z01)&(del Cloudmusic.z02)
+if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Bili.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Bili.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Lawnchair.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Lawnchair.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/QQ.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/QQ.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/sougouinput.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/sougouinput.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/VAeXposed.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/VAeXposed.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Vedio.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(wget https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Vedio.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
 cls
-title 华为儿童手表ADB工具箱Ver1.1.2(BY:不爱酒的I9先生)
+:check
+title 检索资源ing...
+setlocal enabledelayedexpansion
+if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(goto start)
+if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(goto start)
+if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(goto start)
+if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(goto start)
+if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(goto start)
+if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(goto start)
+if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(goto start)
+for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
+    set Config=%%Y
+    if "!Config!"=="ADBMODE0" cls & goto main
+    if "!Config!"=="ADBMODE1" cls & goto main2
+)
+:main
+title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
 color    3F
 echo 欢迎使用华为儿童手表ADB工具箱!
+echo 工具箱ADB模式:!Config!(0为5037,1为24986)
 echo 请检查设备是否连接上了电脑!如果下行没有显示设备请先连接!(显示unauthorized是未授权!请先在设备同意再进行下一步操作!)
+echo 如果遇到ADB端口被占用请进入工具箱设置并切换ADBMODE1
 path = %path%;.\resources\adb;
-set ANDROID_ADB_SERVER_PORT=24986
-adb kill-server
+set ANDROID_ADB_SERVER_PORT=5037
 adb.exe devices
 pause
-cls
+cls & goto input
+:main2
+title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
+color    3F
+echo 欢迎使用华为儿童手表ADB工具箱!
+echo 工具箱ADB模式:!Config!(0为5037,1为24986)
+echo 请检查设备是否连接上了电脑!如果下行没有显示设备请先连接!(显示unauthorized是未授权!请先在设备同意再进行下一步操作!)
+echo 如果遇到ADB端口被占用请进入工具箱设置并切换ADBMODE1
+path = %path%;.\resources\adb;
+set ANDROID_ADB_SERVER_PORT=24986
+adb.exe devices
+pause
+cls & goto input
 :input
-title 华为儿童手表ADB工具箱Ver1.1.2(BY:不爱酒的I9先生)
-set /p "num=[1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI   [6]查看设备状态   [7]安装应用   [8]卸载应用   [9]禁用/启用应用   [10]提取当前应用  [11]替换铃声  [12]重启工具箱 请输入数字然后按下回车键：
+title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
+set /p "num=[1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI   [6]查看设备状态   [7]安装应用   [8]卸载应用   [9]禁用/启用应用   [10]提取当前应用  [11]替换铃声  [12]重启工具箱  [20]工具箱设置 请输入数字然后按下回车键：
 if "%num%"=="1" cls & goto 1
 if "%num%"=="2" cls & goto 2
 if "%num%"=="3" cls & goto 3
@@ -53,9 +83,10 @@ if "%num%"=="9" cls & goto 9
 if "%num%"=="10" cls & goto 10
 if "%num%"=="11" cls & goto 11
 if "%num%"=="12" cls & goto 12
-echo. & echo 不能输入除了1-12之外的其他字符！ & pause>nul & cls & goto input
+if "%num%"=="20" cls & goto 20
+echo. & echo 不能输入除了1-12和20之外的其他字符！ & pause>nul & cls & goto input
 :1
-echo 现在正在执行安装网易云.
+echo 现在正在执行安装手机版网易云.
 echo =====================================================
 echo ==============安装网易云ing...=======================
 echo =====================================================
@@ -203,7 +234,7 @@ for /f "tokens=2" %%i in (%name%\stats\ba.txt) do (
     set ba=%%i
     echo 当前电量为:!ba!
 )
-title 华为儿童手表ADB工具箱Ver1.1.2(BY:不爱酒的I9先生)
+title 华为儿童手表ADB工具箱Ver1.1.5(BY:不爱酒的I9先生)
 echo 按任意键返回主界面
 pause>nul
 cls & goto input
@@ -299,14 +330,15 @@ if "%atn%"=="yes" cls & goto a99
 if "%atn%"=="exit" cls & goto input
 echo. & echo 不能输入除了yes/exit之外的其他字符！ & pause>nul & cls & goto a8
 :a99
-adb shell pm path !at! | find "package:">%name%\stats\at.txt
-for /f "tokens=*" %%m in (%name%\stats\at.txt) do (
-    set at=%%m
-    set "at=!at:package:/= !"
-    echo !at!>>$
-    move $ %name%\stats\at.txt
+adb shell pm path !at! | find "package:">%name%\stats\bt.txt
+for /f "tokens=*" %%m in (%name%\stats\bt.txt) do (
+    set bt=%%m
+    set "bt=!bt:package:/= !"
+    echo !bt!>>$
+    move $ %name%\stats\bt.txt
 )
-adb pull !at! %soft%
+adb pull !bt! %soft%
+ren Application\base.apk !at!.apk
 echo 提取成功!请到Application文件夹查看Apk
 start %soft%
 echo 按任意键返回主界面
@@ -323,4 +355,34 @@ echo 按任意键返回主界面
 pause>nul
 cls & goto input
 :12
-cls & goto start
+start 点我使用.bat&exit
+:20
+set /p "choX=[1] 切换ADBMODE0(恢复默认5037端口)  [2]切换ADBMODE1(端口为24986)  请选择一项并输入,exit退出:
+if "%choX%"=="1" cls & goto :ADBPORTDEF
+if "%choX%"=="2" cls & goto :ADBPORT24986
+if "%choX%"=="exit" cls & goto input
+echo. & echo 不能输入除了1-2和exit之外的其他字符！ & pause>nul & cls & goto :20
+:ADBPORTDEF
+setlocal enabledelayedexpansion
+for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
+    set Config=%%Y
+    set "Config=!Config:ADBMODE1=ADBMODE0!"
+    echo !Config!>>$
+    move $ %name%\stats\Config.txt
+)
+taskkill /f /IM adb.exe
+echo 恢复默认端口成功,按任意键重启工具箱
+pause>nul
+start 点我使用.bat&exit
+:ADBPORT24986
+setlocal enabledelayedexpansion
+for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
+    set Config=%%Y
+    set "Config=!Config:ADBMODE0=ADBMODE1!"
+    echo !Config!>>$
+    move $ %name%\stats\Config.txt
+)
+taskkill /f /IM adb.exe
+echo 设置24986端口成功,按任意键重启工具箱
+pause>nul
+start 点我使用.bat&exit

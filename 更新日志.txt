@@ -1,3 +1,8 @@
+V1.1.5
+#自动修改提取APK名字为包名
+#替换新Gtihub加速源(Powered By ghproxy)
+#新增工具箱设置,现在可以手动选择ADB端口辣!
+#新增重启工具箱
 V1.1.2
 *中考前最后一个版本,没有什么想法暂时不会更新
 *项目文件已经上传至Github:https://github.com/Tufmoc/HuaweiKidsWatchTool-Ver.Bat
