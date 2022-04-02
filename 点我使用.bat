@@ -15,8 +15,8 @@ if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释
 if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释放资源!&md %name%\stats&7z.exe x stats.zip -o%name%\stats | FIND "ing archive")
 if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
 if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
-if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
-if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com//https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
+if exist %name%\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
+if exist %name%\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com//https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
 cls
 :check
 title 检索资源ing...
@@ -46,7 +46,7 @@ adb.exe devices
 pause
 cls & goto input
 :main2
-title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.1.6(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -58,16 +58,16 @@ adb.exe devices
 pause
 cls & goto input
 :input
-title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
-echo ====================  W.Tools工具箱V1.1.5   BY:不爱酒的I9先生、LIPiston  ================
+title W.Tools工具箱V1.1.6(BY:不爱酒的I9先生、LIPiston)
+echo ====================  W.Tools工具箱V1.1.6   BY:不爱酒的I9先生、LIPiston  ================
 echo =                                                                                       =
 echo = [1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI    =
 echo =                                                                                       =
 echo = [6]查看设备状态   [7]安装应用   [8]卸载应用   [9]禁用/启用应用   [10]提取当前应用     =
 echo =                                                                                       =
-echo = [11]替换铃声  [12]重启工具箱  [20]工具箱设置  [21]关闭工具箱     [22]scrcpy           =
+echo = [11]替换铃声  [12]重启工具箱  [20]工具箱设置   [21]Scrcpy投屏                         =
 echo =                                                                                       =
-echo ==========================[666]初始化工具箱==============================================
+echo ==========================[Re]初始化工具箱  [Exit]关闭工具箱==============================
 set /p "num=请输入数字然后按下回车键：
 if "%num%"=="1" cls & goto 1
 if "%num%"=="2" cls & goto 2
@@ -82,10 +82,11 @@ if "%num%"=="10" cls & goto 10
 if "%num%"=="11" cls & goto 11
 if "%num%"=="12" cls & goto 12
 if "%num%"=="20" cls & goto 20
+if "%num%"=="Exit" cls & goto Exit
+if "%num%"=="exit" cls & goto Exit
 if "%num%"=="21" cls & goto 21
-if "%num%"=="22" cls & goto 22
-if "%num%"=="666" cls & goto 666
-echo. & echo 不能输入除了1-12和20-22之外的其他字符！ & pause>nul & cls & goto input
+if "%num%"=="Re" cls & goto Re
+echo. & echo 不能输入除了1-12,20-22和Re之外的其他字符！ & pause>nul & cls & goto input
 :1
 echo 现在正在执行安装手机版网易云.
 echo =====================================================
@@ -96,11 +97,13 @@ set /p "dpi=是否要更改DPI为120来登录?是请输入Y(设备会自动重启!),否按任意键:
 if "%dpi%"=="Y" (adb shell wm density 120)&(adb reboot)&(echo 已完成更改!)&(echo 等待设备完成重启,登陆网易云后,完成下一步DPI更改至220日常使用)&pause&(adb shell wm density 220)&(adb reboot)&(echo 已将DPI修改至220!)
 cls & goto input
 :2
-echo [1]安装搜狗输入法
-echo [2]安装可以打字的QQ(手表版)
-echo [3]激活输入法
-echo [4]安装第三方桌面(Lawnchair)
-echo [5]一键去除/恢复防沉迷
+echo  =======================================
+echo =      [1]安装搜狗输入法                =
+echo =      [2]安装可以打字的QQ(手表版)      =
+echo =      [3]激活输入法                    =
+echo =      [4]安装第三方桌面(Lawnchair)     =
+echo =      [5]一键去除/恢复防沉迷           =
+echo  =======================================
 set /p "cho2=请选择一项并输入,exit退出:
 if "%cho2%"=="1" cls & goto a2
 if "%cho2%"=="2" cls & goto b2
@@ -150,9 +153,14 @@ echo 按任意键返回主界面
 pause>nul
 cls & goto input
 :b5
-set /p "ui=[1]去除防沉迷   [2]恢复防沉迷 :
+echo  ===================
+echo =   [1]去除防沉迷   =
+echo =   [2]恢复防沉迷   =
+echo  ===================
+set /p "ui=请选择一项并输入,exit退出:
 if "%ui%"=="1" cls & goto c1
 if "%ui%"=="2" cls & goto c2
+if "%ui%"=="exit" cls & goto input
 :c1
 echo 请明白你正在做什么!去除防沉迷即为去除温控,手表会变得十分烫!有可能会损坏手表!(本人实测最高温度电池55°C,后壳53.8°C,PA(核心)64°C)
 echo 去除防沉迷的原理是禁用com.android.systemui即系统ui达到的,所以请务必在此之前先安装一个第三方桌面,你也可以输入desk快速前往安装桌面,如已安装则请略过
@@ -191,7 +199,7 @@ cls
 goto 4
 :5
 set /p var=输入DPI:
-(adb shell wm density %var%)&(adb reboot)&(echo 已完成更改!)
+(adb shell wm density %var%)&(echo 已完成更改!)
 echo 按任意键返回主界面
 pause>nul
 cls & goto input
@@ -216,6 +224,7 @@ for /f "tokens=1" %%p in (%name%\stats\sys.txt) do (
 )
 for /f "eol=* tokens=*" %%q in (%name%\stats\cpu.txt) do (
     set cpu=%%q
+    set "cpu=!cpu:Hardware	=型号!"
     echo CPU!cpu!
 )
 for /f "tokens=3" %%w in (%name%\stats\mem.txt) do (
@@ -240,7 +249,7 @@ for /f "tokens=2" %%i in (%name%\stats\ba.txt) do (
     set ba=%%i
     echo 当前电量为:!ba!
 )
-title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
+title W.Tools工具箱V1.1.6(BY:不爱酒的I9先生、LIPiston)
 echo 按任意键返回主界面
 pause>nul
 cls & goto input
@@ -363,11 +372,16 @@ cls & goto input
 :12
 start 点我使用.bat&exit
 :20
-echo [1] 切换ADBMODE0(恢复默认5037端口)
-echo [2]切换ADBMODE1(端口为24986)
+echo   ========================================
+echo =    当前工具箱模式!Config!                =
+echo =    [1]切换ADBMODE0(恢复默认5037端口)     =
+echo =    [2]切换ADBMODE1(端口为24986)          =
+echo =    [3]更新工具箱                         =
+echo   ========================================
 set /p "choX=请选择一项并输入,exit退出:
-if "%choX%"=="1" cls & goto :ADBPORTDEF
-if "%choX%"=="2" cls & goto :ADBPORT24986
+if "%choX%"=="1" cls & goto ADBPORTDEF
+if "%choX%"=="2" cls & goto ADBPORT24986
+if "%choX%"=="3" cls & goto update
 if "%choX%"=="exit" cls & goto input
 echo. & echo 不能输入除了1-2和exit之外的其他字符！ & pause>nul & cls & goto :20
 :ADBPORTDEF
@@ -394,7 +408,19 @@ taskkill /f /IM adb.exe
 echo 设置24986端口成功,按任意键重启工具箱
 pause>nul
 start 点我使用.bat&exit
-:21
+:update
+setlocal enabledelayedexpansion
+del %name%\stats\version.txt
+(echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://raw.githubusercontent.com/Tufmoc/Garbage/main/Version.txt)&(move Version.txt %name%\stats\)&cls
+for /f "tokens=*" %%A in (%name%\stats\Version.txt) do (
+    set nver=%%A
+    if "!nver!"=="1.1.8" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
+)
+:dupdate
+(echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://raw.githubusercontent.com/Tufmoc/Garbage/main/update.bat)&(if exist update.bat (goto doupdate) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
+:doupdate
+(echo 开始更新!)&(timeout /nobreak /t 2)&(start update.bat)&exit 
+:Exit
 start 关闭ADB服务.bat&exit
 :22
 start 关闭ADB服务.bat
@@ -403,7 +429,7 @@ start scrcpy.exe
 pause
 start 关闭ADB服务.bat
 cls & goto 12
-:666
+:Re
 cls & start 关闭ADB服务.bat
 timeout /nobreak /t 2
 rd /s/Q %soft%
