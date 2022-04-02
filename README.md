@@ -8,5 +8,5 @@
 ------
 ### 相关链接
 [Git](https://github.com/Tufmoc/Garbage)  
-[git](https://github.com/Genymobile/scrcpy)  
+[scrcpy](https://github.com/Genymobile/scrcpy)  
 [C#Version](https://github.com/FriendShip-Studio/HuaweiKidsWatchTools-Ver.C)
