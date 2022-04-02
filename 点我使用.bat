@@ -411,13 +411,13 @@ start 点我使用.bat&exit
 :update
 setlocal enabledelayedexpansion
 del %name%\stats\version.txt
-(echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://raw.githubusercontent.com/Tufmoc/Garbage/main/Version.txt)&(move Version.txt %name%\stats\)&cls
+(echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/Version.txt)&(move Version.txt %name%\stats\)&cls
 for /f "tokens=*" %%A in (%name%\stats\Version.txt) do (
     set nver=%%A
     if "!nver!"=="1.1.8" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
 )
 :dupdate
-(echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://raw.githubusercontent.com/Tufmoc/Garbage/main/update.bat)&(if exist update.bat (goto doupdate) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
+(echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/update.bat)&(if exist update.bat (goto doupdate) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
 :doupdate
 (echo 开始更新!)&(timeout /nobreak /t 2)&(start update.bat)&exit 
 :Exit
