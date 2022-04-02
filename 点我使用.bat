@@ -1,6 +1,6 @@
 @echo off
 :start
-title 检索资源ing...
+title 补全资源中...
 color 4F
 mode con cols=140 lines=30
 set name=Resources
@@ -15,20 +15,8 @@ if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释
 if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释放资源!&md %name%\stats&7z.exe x stats.zip -o%name%\stats | FIND "ing archive")
 if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
 if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
-if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.zip?raw=true)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.z01?raw=true)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.z02?raw=true)&(ren *."zip@raw=true" *.zip)&(ren *."z01@raw=true" *.z01)&(ren *."z02@raw=true" *.z02)&(7z.exe x Cloudmusic.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del Cloudmusic.zip)&(del Cloudmusic.z01)&(del Cloudmusic.z02)
-if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.zip?raw=true)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/mainwget/Cloudmusic.z01?raw=true)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Cloudmusic.z02?raw=true)&(ren *."zip@raw=true" *.zip)&(ren *."z01@raw=true" *.z01)&(ren *."z02@raw=true" *.z02)&(7z.exe x Cloudmusic.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del Cloudmusic.zip)&(del Cloudmusic.z01)&(del Cloudmusic.z02)
-if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Bili.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Bili.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Lawnchair.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Lawnchair.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/QQ.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/QQ.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/sougouinput.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/sougouinput.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/VAeXposed.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/VAeXposed.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Vedio.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
-if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/blob/main/Vedio.apk?raw=true)&(ren *."apk@raw=true" *.apk)&(move *.apk %name%\apk\)
+if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
+if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com//https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
 cls
 :check
 title 检索资源ing...
@@ -46,7 +34,7 @@ for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     if "!Config!"=="ADBMODE1" cls & goto main2
 )
 :main
-title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
+title W.Tools工具箱V1.1.6(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -58,7 +46,7 @@ adb.exe devices
 pause
 cls & goto input
 :main2
-title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
+title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -71,13 +59,13 @@ pause
 cls & goto input
 :input
 title W.Tools工具箱V1.1.5(BY:不爱酒的I9先生)
-echo ====================  W.Tools工具箱V1.1.5   BY:不爱酒的I9先生  ==========================
+echo ====================  W.Tools工具箱V1.1.5   BY:不爱酒的I9先生、LIPiston  ================
 echo = [1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI    =
 echo =                                                                                       =
 echo = [6]查看设备状态   [7]安装应用   [8]卸载应用   [9]禁用/启用应用   [10]提取当前应用     =
-echo =                                                                                       =  
-echo = [11]替换铃声  [12]重启工具箱  [20]工具箱设置  [21]关闭工具箱                          =
-echo =========================================================================================
+echo =                                                                                       =
+echo = [11]替换铃声  [12]重启工具箱  [20]工具箱设置  [21]关闭工具箱     [22]scrcpy           =
+echo ==========================[666]初始化工具箱==============================================
 set /p "num=请输入数字然后按下回车键：
 if "%num%"=="1" cls & goto 1
 if "%num%"=="2" cls & goto 2
@@ -93,7 +81,9 @@ if "%num%"=="11" cls & goto 11
 if "%num%"=="12" cls & goto 12
 if "%num%"=="20" cls & goto 20
 if "%num%"=="21" cls & goto 21
-echo. & echo 不能输入除了1-12和20-21之外的其他字符！ & pause>nul & cls & goto input
+if "%num%"=="22" cls & goto 22
+if "%num%"=="666" cls & goto 666
+echo. & echo 不能输入除了1-12和20-22之外的其他字符！ & pause>nul & cls & goto input
 :1
 echo 现在正在执行安装手机版网易云.
 echo =====================================================
@@ -404,3 +394,17 @@ pause>nul
 start 点我使用.bat&exit
 :21
 start 关闭ADB服务.bat&exit
+:22
+start 关闭ADB服务.bat
+timeout /nobreak /t 1
+start scrcpy.exe
+pause
+start 关闭ADB服务.bat
+cls & goto 12
+:666
+cls & start 关闭ADB服务.bat
+timeout /nobreak /t 2
+rd /s/Q %soft%
+rd /s/Q %name%
+del /s/Q .wget-hsts
+exit
