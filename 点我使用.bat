@@ -37,7 +37,7 @@ for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     if "!Config!"=="ADBMODE1" cls & goto main2
 )
 :main
-title W.Tools工具箱V1.1.8(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -49,7 +49,7 @@ adb.exe devices
 pause
 cls & goto input
 :main2
-title W.Tools工具箱V1.1.8(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -61,8 +61,8 @@ adb.exe devices
 pause
 cls & goto input
 :input
-title W.Tools工具箱V1.1.8(BY:不爱酒的I9先生、LIPiston)
-echo ====================  W.Tools工具箱V1.1.8   BY:不爱酒的I9先生、LIPiston  ================
+title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
+echo ====================  W.Tools工具箱V1.1.9   BY:不爱酒的I9先生、LIPiston  ================
 echo =                                                                                       =
 echo = [1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI    =
 echo =                                                                                       =
