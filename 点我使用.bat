@@ -7,7 +7,6 @@ if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹
 if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在创建!&md Application)
 if exist %soft% (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在补全!&goto install)
 if exist %soft% (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在补全!&goto install)
-path = %path%;.\resources
 set name=Resources
 set soft=Application
 taskkill /f /IM adb.exe
@@ -18,6 +17,7 @@ if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Reso
 if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/Resources.7z)&(7z.exe x Resources.7z | FIND "ing archive")&(del Resources.7z)
 if exist Resources\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
 if exist Resources\apk\Vedio.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
+path = Resources
 cls & goto start
 :check
 title 检索资源ing...
@@ -37,7 +37,7 @@ for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     if "!Config!"=="ADBMODE1" cls & goto main2
 )
 :main
-title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.1.8(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -49,7 +49,7 @@ adb.exe devices
 pause
 cls & goto input
 :main2
-title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.1.8(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -61,8 +61,8 @@ adb.exe devices
 pause
 cls & goto input
 :input
-title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
-echo ====================  W.Tools工具箱V1.1.9   BY:不爱酒的I9先生、LIPiston  ================
+title W.Tools工具箱V1.1.8(BY:不爱酒的I9先生、LIPiston)
+echo ====================  W.Tools工具箱V1.1.8   BY:不爱酒的I9先生、LIPiston  ================
 echo =                                                                                       =
 echo = [1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI    =
 echo =                                                                                       =
@@ -425,7 +425,7 @@ for /f "tokens=*" %%A in (Version.txt) do (
 (echo 开始更新!)&(timeout /nobreak /t 2)&(start update.bat)&exit 
 :Exit
 start 关闭ADB服务.bat&exit
-:22
+:21
 start 关闭ADB服务.bat
 timeout /nobreak /t 1
 start scrcpy.exe
