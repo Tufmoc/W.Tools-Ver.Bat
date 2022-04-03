@@ -13,10 +13,10 @@ taskkill /f /IM adb.exe
 cls & goto check
 :install
 title 下载资源ing...
-if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/Resources.7z)&(7z.exe x Resources.7z | FIND "ing archive")&(del Resources.7z)
-if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/Resources.7z)&(7z.exe x Resources.7z | FIND "ing archive")&(del Resources.7z)
-if exist Resources\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
-if exist Resources\apk\Vedio.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
+if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/Resources.7z)&(7z.exe x Resources.7z | FIND "ing archive")&(del Resources.7z)
+if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/Resources.7z)&(7z.exe x Resources.7z | FIND "ing archive")&(del Resources.7z)
+if exist Resources\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
+if exist Resources\apk\Vedio.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
 path = Resources
 cls & goto start
 :check
@@ -268,10 +268,13 @@ cls
 goto 7
 pause
 :8
-set /p "num=        [1]获取当前软件包名   [2]获取所有包名        请输入数字,输入0则退出:
+echo  ==============================================
+echo =     [1]获取当前软件包名   [2]获取所有包名    =
+echo  ==============================================    
+set /p "num=请输入数字,输入exit则退出:
 if "%num%"=="1" cls & goto a8
 if "%num%"=="2" cls & goto b8
-if "%num%"=="0" cls & goto input
+if "%num%"=="exit" cls & goto input
 :a8
 title 输入exit返回
 setlocal enabledelayedexpansion
@@ -306,7 +309,10 @@ if "%unapk%"=="exit" (cls&goto input)
 pause>nul
 cls & goto input
 :9
-set /p "pm=        [1]禁用/冻结应用   [2]启用/恢复应用        请输入数字,输入exit则退出:
+echo  ==============================================
+echo =     [1]禁用/冻结应用   [2]启用/恢复应用      =
+echo  ==============================================    
+set /p "pm=请输入数字,输入exit则退出:
 if "%pm%"=="1" cls & goto a9
 if "%pm%"=="2" cls & goto b9
 if "%pm%"=="exit" cls & goto input
@@ -413,14 +419,14 @@ pause>nul
 start 点我使用.bat&exit
 :update
 setlocal enabledelayedexpansion
-del version.txt
-(echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/Version.txt)&cls
-for /f "tokens=*" %%A in (Version.txt) do (
+del %name%\stats\version.txt
+(echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/Version.txt)&(move Version.txt %name%\stats\)&cls
+for /f "tokens=*" %%A in (%name%\stats\Version.txt) do (
     set nver=%%A
     if "!nver!"=="1.1.9" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
 )
 :dupdate
-(echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/update.bat)&(if exist update.bat (goto doupdate&del version.txt) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
+(echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/update.bat)&(if exist update.bat (goto doupdate&del version.txt) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
 :doupdate
 (echo 开始更新!)&(timeout /nobreak /t 2)&(start update.bat)&exit 
 :Exit
