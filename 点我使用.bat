@@ -3,31 +3,34 @@
 title 补全资源中...
 color 4F
 mode con cols=140 lines=30
+if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在创建!&md Application)
+if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在创建!&md Application)
+if exist %soft% (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在补全!&goto install)
+if exist %soft% (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在补全!&goto install)
+path = %path%;.\resources
 set name=Resources
 set soft=Application
 taskkill /f /IM adb.exe
-if exist %name% (echo 存在资源文件夹!) else (echo 不存在资源文件夹!正在创建资源文件夹!&7z.exe x resources.zip | FIND "ing archive")
-if exist %name%\adb\ (echo 存在ADB文件夹!) else (echo 不存在ADB文件夹!正在释放资源!&md %name%\adb&7z.exe x adb.zip -o%name%\adb | FIND "ing archive")
-if exist %name%\adb\ (echo 存在ADB文件夹!) else (echo 不存在ADB文件夹!正在释放资源!&md %name%\adb&7z.exe x adb.zip -o%name%\adb | FIND "ing archive")
-if exist %name%\apk\ (echo 存在APK文件夹!) else (echo 不存在APK文件夹!正在释放资源!&md %name%\apk&7z.exe x apk.zip -o%name%\apk | FIND "ing archive")
-if exist %name%\apk\ (echo 存在APK文件夹!) else (echo 不存在APK文件夹!正在释放资源!&md %name%\apk&7z.exe x apk.zip -o%name%\apk | FIND "ing archive")
-if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释放资源!&md %name%\stats&7z.exe x stats.zip -o%name%\stats | FIND "ing archive")
-if exist %name%\stats\ (echo 存在STATS文件夹!) else (echo 不存在APK文件夹!正在释放资源!&md %name%\stats&7z.exe x stats.zip -o%name%\stats | FIND "ing archive")
-if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
-if exist %soft% (echo 存在Application文件夹!) else (echo 不存在Application文件夹!正在释放资源!&md Application)
-if exist %name%\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
-if exist %name%\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在get-apk.zip!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com//https://github.com/Tufmoc/Garbage/releases/download/4.2/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(move *.apk %name%\apk\)&(del get-apk.zip)
-cls
+cls & goto check
+:install
+title 下载资源ing...
+if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/Resources.7z)&(7z.exe x Resources.7z | FIND "ing archive")&(del Resources.7z)
+if exist Resources\adb\adb.exe (echo 存在Resources文件夹!) else (echo 不存在Resources文件夹!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/Resources.7z)&(7z.exe x Resources.7z | FIND "ing archive")&(del Resources.7z)
+if exist Resources\apk\Cloudmusic.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
+if exist Resources\apk\Vedio.apk (echo 存在软件包!) else (echo 不存在软件包!正在重新下载!)&(wget -q --show-progress https://mirror.ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/get-apk.zip)&(7z.exe x get-apk.zip -o%name%\apk | FIND "ing archive")&(del get-apk.zip)
+cls & goto start
 :check
 title 检索资源ing...
 setlocal enabledelayedexpansion
-if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 不存在Cloudmusic.apk!正在重新下载!)&(goto start)
-if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 不存在Bili.apk!正在重新下载!)&(goto start)
-if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 不存在Lawnchair.apk!正在重新下载!)&(goto start)
-if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 不存在QQ.apk!正在重新下载!)&(goto start)
-if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 不存在sougouinput.apk!正在重新下载!)&(goto start)
-if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 不存在VAeXposed.apk!正在重新下载!)&(goto start)
-if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 不存在Vedio.apk!正在重新下载!)&(goto start)
+if exist %name%\apk\Cloudmusic.apk (echo 存在Cloudmusic.apk!) else (echo 缺少apk!正在重新下载!)&(goto install)
+if exist %name%\apk\Bili.apk (echo 存在Bili.apk!) else (echo 缺少!正在重新下载!)&(goto install)
+if exist %name%\apk\Lawnchair.apk (echo 存在Lawnchair.apk!) else (echo 缺少apk!正在重新下载!)&(goto install)
+if exist %name%\apk\QQ.apk (echo 存在QQ.apk!) else (echo 缺少apk!正在重新下载!)&(goto install)
+if exist %name%\apk\sougouinput.apk (echo 存在sougouinput.apk!) else (echo 缺少apk!正在重新下载!)&(goto install)
+if exist %name%\apk\VAeXposed.apk (echo 存在VAeXposed.apk!) else (echo 缺少apk!正在重新下载!)&(goto install)
+if exist %name%\apk\Vedio.apk (echo 存在Vedio.apk!) else (echo 缺少apk!正在重新下载!)&(goto install)
+if exist %name%\stats\cpu.txt (echo 检测框架完整!) else (echo 检测框架不完整!正在重新下载!)&(goto install)
+if exist %name%\adb\adb.exe (echo adb包完整!) else (echo adb不完整!正在重新下载!)&(goto install)
 for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     set Config=%%Y
     if "!Config!"=="ADBMODE0" cls & goto main
@@ -410,14 +413,14 @@ pause>nul
 start 点我使用.bat&exit
 :update
 setlocal enabledelayedexpansion
-del %name%\stats\version.txt
-(echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/Version.txt)&(move Version.txt %name%\stats\)&cls
-for /f "tokens=*" %%A in (%name%\stats\Version.txt) do (
+del version.txt
+(echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/Version.txt)&cls
+for /f "tokens=*" %%A in (Version.txt) do (
     set nver=%%A
-    if "!nver!"=="1.1.8" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
+    if "!nver!"=="1.1.9" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
 )
 :dupdate
-(echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/4.2/update.bat)&(if exist update.bat (goto doupdate) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
+(echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.tool-bat/update.bat)&(if exist update.bat (goto doupdate&del version.txt) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
 :doupdate
 (echo 开始更新!)&(timeout /nobreak /t 2)&(start update.bat)&exit 
 :Exit
