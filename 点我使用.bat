@@ -37,7 +37,7 @@ for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     if "!Config!"=="ADBMODE1" cls & goto main2
 )
 :main
-title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.2.0(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -49,7 +49,7 @@ adb.exe devices
 pause
 cls & goto input
 :main2
-title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.2.0(BY:不爱酒的I9先生、LIPiston)
 color    3F
 echo 欢迎使用 W.Tools 工具箱!
 echo 工具箱ADB模式:!Config!(0为5037,1为24986)
@@ -61,14 +61,14 @@ adb.exe devices
 pause
 cls & goto input
 :input
-title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
-echo ====================  W.Tools工具箱V1.1.9   BY:不爱酒的I9先生、LIPiston  ================
+title W.Tools工具箱V1.2.0(BY:不爱酒的I9先生、LIPiston)
+echo ====================  W.Tools工具箱V1.2.0   BY:不爱酒的I9先生、LIPiston  ================
 echo =                                                                                       =
 echo = [1]安装网易云   [2]安装日常软件   [3]安装VAeXposed(框架)   [4]ADB命令   [5]调整DPI    =
 echo =                                                                                       =
 echo = [6]查看设备状态   [7]安装应用   [8]卸载应用   [9]禁用/启用应用   [10]提取当前应用     =
 echo =                                                                                       =
-echo = [11]替换铃声  [12]重启工具箱  [20]工具箱设置   [21]Scrcpy投屏                         =
+echo = [11]替换铃声  [12]重启工具箱  [20]工具箱设置   [21]Scrcpy投屏   [22]APK签名            =
 echo =                                                                                       =
 echo ==========================[Re]初始化工具箱  [Exit]关闭工具箱==============================
 set /p "num=请输入数字然后按下回车键：
@@ -88,6 +88,7 @@ if "%num%"=="20" cls & goto 20
 if "%num%"=="Exit" cls & goto Exit
 if "%num%"=="exit" cls & goto Exit
 if "%num%"=="21" cls & goto 21
+if "%num%"=="22" cls & goto 22
 if "%num%"=="Re" cls & goto Re
 echo. & echo 不能输入除了1-12,20-22和Re之外的其他字符！ & pause>nul & cls & goto input
 :1
@@ -252,7 +253,7 @@ for /f "tokens=2" %%i in (%name%\stats\ba.txt) do (
     set ba=%%i
     echo 当前电量为:!ba!
 )
-title W.Tools工具箱V1.1.9(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.2.0(BY:不爱酒的I9先生、LIPiston)
 echo 按任意键返回主界面
 pause>nul
 cls & goto input
@@ -423,7 +424,7 @@ del %name%\stats\version.txt
 (echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/Version.txt)&(move Version.txt %name%\stats\)&cls
 for /f "tokens=*" %%A in (%name%\stats\Version.txt) do (
     set nver=%%A
-    if "!nver!"=="1.1.9" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
+    if "!nver!"=="1.2.0" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
 )
 :dupdate
 (echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/update.bat)&(if exist update.bat (goto doupdate&del version.txt) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
@@ -445,3 +446,17 @@ rd /s/Q %soft%
 rd /s/Q %name%
 del /s/Q .wget-hsts
 exit
+:22
+echo   ========================================
+echo =       请将需要签名的软件拖拽至此处      =
+echo =       请确保你已经安装好JAVA环境      =
+echo   ========================================
+set /p "sing=软件路径:
+java -jar %name%/apk/apksigner.jar sign -verbose --ks %name%/apk/keystore.jks --v1-signing-enabled false --v2-signing-enabled true --ks-pass pass:7355608 --ks-key-alias key0 --key-pass pass:7355608 --out Input_Singed.apk %sing%
+move Input_Singed.apk %soft%
+cls
+echo 签名成功,请到Application文件夹查看!
+start %soft%
+echo 按任意键返回主界面
+pause>nul
+cls & goto input
