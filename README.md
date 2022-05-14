@@ -9,8 +9,8 @@ A:W.Tools专门针对了华为儿童手表做了优化,当然部分功能也可�
 ------
 ### 相关链接
 [Git](https://github.com/Tufmoc/Garbage)  
+[C#Version](https://github.com/FriendShip-Studio/W.Tools-Ver.C)  
 [Wget](https://eternallybored.org/misc/wget/)  
 [7-zip](https://www.7-zip.org/)  
 [Scrcpy](https://github.com/Genymobile/scrcpy)  
-[C#Version](https://github.com/FriendShip-Studio/W.Tools-Ver.C)  
 [ApkSigner](https://developer.android.google.cn/studio/command-line/apksigner?hl=zh-cn)
