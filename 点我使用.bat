@@ -239,11 +239,9 @@ for /f "tokens=3" %%e in (%name%\stats\fmem.txt) do (
     set fmem=%%e
     echo 设备剩余内存:!fmem!
 )
-)
 for /f "tokens=3" %%f in (%name%\stats\dpi.txt) do (
     set dpi=%%f
     echo 设备默认DPI:!dpi!
-)
 )
 for /f "tokens=3" %%g in (%name%\stats\cdpi.txt) do (
     set cdpi=%%g
@@ -262,12 +260,22 @@ title 输入exit返回
 setlocal enabledelayedexpansion
 echo 请直接把要安装的软件直接拖入到工具箱窗口(确保你已经签名为V2!最好是英文名字,不是请先改名!)
 echo 软件目录不要放在C盘,否则工具箱直接崩溃!
-set /p apk=要安装的软件:
+echo 要安装的软件:
+set /p apk=
 if "%apk%"=="exit" (cls&goto input)
-adb install %apk%&(echo 完成!)&pause
+copy %apk% %name%\
+if exist %name%\*.apk else (cls&goto 7a)
+adb install %name%\*.apk&(echo 完成!)&pause
+del /q %name%\*.apk
 cls
 goto 7
 pause
+:7a
+echo 你放入了不可识别的文件
+echo 请安装 xxx.apk 文件
+pause
+cls
+goto 7
 :8
 echo  ==============================================
 echo =     [1]获取当前软件包名   [2]获取所有包名    =
