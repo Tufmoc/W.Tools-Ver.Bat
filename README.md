@@ -14,4 +14,4 @@ A:W.Tools专门针对了华为儿童手表做了优化,当然部分功能也可�
 [Wget](https://eternallybored.org/misc/wget/)  
 [7-zip](https://www.7-zip.org/)  
 [Scrcpy](https://github.com/Genymobile/scrcpy)  
-[ApkSigner](https://developer.android.google.cn/studio/command-line/apksigner?hl=zh-cn)
+[yadb](https://github.com/ysbing/yadb/tree/master)
