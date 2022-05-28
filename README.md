@@ -26,5 +26,5 @@ git clone https://github.com/Tufmoc/W.Tools-Ver.Bat.git
 [Wget](https://eternallybored.org/misc/wget/)  
 [7-zip](https://www.7-zip.org/)  
 [Scrcpy](https://github.com/Genymobile/scrcpy)  
-[yadb](https://github.com/ysbing/yadb/tree/master)
+[yadb](https://github.com/ysbing/yadb/tree/master)  
 [aapt](https://developer.android.com/studio/command-line/aapt2)
