@@ -15,8 +15,8 @@ git clone https://github.com/Tufmoc/W.Tools-Ver.Bat.git
 ```
 
 ------
-已知 BUG:APK 目录过长会导致崩溃  
-解决办法:放到桌面再拖入工具箱
+已知 BUG:APK 目录有空格会导致崩溃  
+解决办法:放到无空格目录后再拖入工具箱
 
 ------
 ### 相关链接
