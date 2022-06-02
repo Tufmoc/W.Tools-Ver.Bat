@@ -26,15 +26,15 @@ for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     set Config=%%Y
     if "!Config!"=="ADBMODE0" cls & goto main
     if "!Config!"=="ADBMODE1" cls & goto main2
+    if "!Config!"=="ADBMODE3" cls & goto main3
 )
 :main
 title 初始化...
 path = %path%;.\resources\adb;
 set ANDROID_ADB_SERVER_PORT=5037
-
 echo ===================================== 欢迎使用 W.Tools 工具箱!==================================================
 echo =                                                                                                             =
-echo =                  当前工具箱ADB模式:!Config!(0为5037,1为24986)                                               =
+echo =                  当前工具箱ADB模式:!Config!(0为5037,1为24986,3为无线ADB调试)                                =
 echo =                  请检查设备是否连接上了电脑!如果下行没有显示设备请先连接!(显示unauthorized是未授权,请先在设备同意再进行下一步操作!)        =
 echo =                  如果遇到ADB端口被占用请进入工具箱设置并切换ADBMODE1                                        =
 echo =                                                                                                             =
@@ -44,14 +44,35 @@ pause
 cls & goto input
 :main2
 title 初始化...
+path = %path%;.\resources\adb;
 set ANDROID_ADB_SERVER_PORT=24986
 echo ===================================== 欢迎使用 W.Tools 工具箱!==================================================
 echo =                                                                                                             =
-echo =                  当前工具箱ADB模式:!Config!(0为5037,1为24986)                                               =
+echo =                  当前工具箱ADB模式:!Config!(0为5037,1为24986,3为无线ADB调试)                                =
 echo =                  请检查设备是否连接上了电脑!如果下行没有显示设备请先连接!(显示unauthorized是未授权,请先在设备同意再进行下一步操作!)        =
 echo =                  如果遇到ADB端口被占用请进入工具箱设置并切换ADBMODE0                                        =
 echo =                                                                                                             =
 echo ==============================================================================================================
+adb devices
+pause
+cls & goto input
+:main3
+title 连接设备...
+path = %path%;.\resources\adb;
+set ANDROID_ADB_SERVER_PORT=5037
+adb start-server
+cls
+echo ===================================== 欢迎使用 W.Tools 工具箱!==================================================
+echo =                                                                                                             =
+echo =                  当前工具箱ADB模式:!Config!(0为5037,1为24986,3为无线ADB调试)                                =
+echo =                  请在下面输入设备IP地址,如需要查询,请自行到路由器后台查看设备IP                             =
+echo =                  Tips:输入de进入ADB有线调试                                                                 =
+echo =                                                                                                             =
+echo ===============================================================================================================
+set /p "ip=请输入设备IP地址然后按下回车键：
+if "%ip%"=="de" cls & goto ADBPORTDEF
+set /p "port=请输入设备调试端口然后按下回车键：
+adb connect %ip%:%port%
 adb devices
 pause
 cls & goto input
@@ -83,6 +104,9 @@ for /f "tokens=*" %%s in (%name%\stats\stats.txt) do (
 )
 for /f "tokens=2" %%i in (%name%\stats\ba.txt) do (
     set ba=%%i
+    set "ba=!*:设备未授权或未连接!"
+    echo !ba!>>$
+    move $ %name%\stats\ba.txt
 )
 cls
 adb shell dumpsys battery | find "level">%name%\stats\ba.txt
@@ -99,6 +123,9 @@ for /f "tokens=1" %%p in (%name%\stats\sys.txt) do (
 for /f "skip=1 tokens=1" %%z in (%name%\stats\devices.txt) do (
     set devices=%%z
 )
+for /f "tokens=2" %%i in (%name%\stats\ba.txt) do (
+    set ba=%%i
+)
 for /f "skip=1 tokens=2" %%x in (%name%\stats\stats.txt) do (
     set stats=%%x
     if "!stats!"==" " (set "stats=!stats:*=设备未连接到ADB或没有响应!")&(echo !stats!>>$)&(move $ %name%\stats\stats.txt)
@@ -107,8 +134,8 @@ for /f "skip=1 tokens=2" %%x in (%name%\stats\stats.txt) do (
     if "!stats!"=="offline" (set "stats=!stats:offline=设备未连接到ADB或没有响应!")&(echo !stats!>>$)&(move $ %name%\stats\stats.txt)
 )
 cls
-title W.Tools工具箱V1.2.6(BY:不爱酒的I9先生、LIPiston)
-echo ====================  W.Tools工具箱V1.2.6   BY:不爱酒的I9先生、LIPiston  ================
+title W.Tools工具箱V1.2.8(BY:不爱酒的I9先生、LIPiston)
+echo ====================  W.Tools工具箱V1.2.8   BY:不爱酒的I9先生、LIPiston  ================
 echo =                                                                                       =              
 echo =           [1]软件管理                                            [2]设备管理          =              已连接设备:!devices!
 echo =                                                                                       =              设备型号:!model!
@@ -167,14 +194,16 @@ if "%num%"=="3" cls & goto 11
 :tool
 echo                                             ============================================================
 echo                                             =      [1]ADB命令行模式                                    =
-echo                                             =      [2]Scrcpy投屏                                      =
+echo                                             =      [2]Scrcpy投屏                                       =
 echo                                             =      [3]文本输入                                         =
+echo                                             =      [4]开启无线调试                                     =
 echo                                             ============================================================
 set /p "num=请输入数字然后按下回车键,输入Q返回：
 if "%num%"=="Q" cls & goto input
 if "%num%"=="1" cls & goto 4
 if "%num%"=="2" cls & goto 21
 if "%num%"=="3" cls & goto 22
+if "%num%"=="4" cls & goto 23
 :manage
 echo                                             ============================================================
 echo                                             =      [1]重启工具箱                                       =
@@ -313,12 +342,11 @@ if exist Resources\apk\Vedio.apk (goto 3b) else (echo 正在下载Vedio...)&(wget -q
 :4
 title 输入Q返回
 echo =========================================================================================================================================
-echo =          常用的adb命令有install(安装),uninstall(卸载),reboot(重启)等,可自行百度查看,此处已经省略了adb的前缀,只需要直接输入命令即可    =
+echo =                                       常用的adb命令有install(安装),uninstall(卸载),reboot(重启)等                                     =
 echo =========================================================================================================================================
-setlocal enabledelayedexpansion
 set /p command=请在此输入指令:
 if "%command%"=="Q" (cls&goto input)
-adb %command%&pause
+%command%&pause
 cls
 goto 4
 :5
@@ -388,13 +416,13 @@ for /f "tokens=2" %%i in (%name%\stats\ba.txt) do (
     echo         当前电量为:!ba!
     echo ================================================
 )
-title W.Tools工具箱V1.2.6(BY:不爱酒的I9先生、LIPiston)
+title W.Tools工具箱V1.2.8(BY:不爱酒的I9先生、LIPiston)
 echo 按任意键返回主界面
 pause>nul
 cls & goto input
 :7
 title 输入Q返回
-::setlocal enabledelayedexpansion
+setlocal enabledelayedexpansion
 cls
 echo =======================================================================================
 echo =              请直接把要安装的软件直接拖入到工具箱窗口(确保你已经签名为V2!)           =
@@ -402,6 +430,10 @@ echo =                      软件目录不要有空格,否则工具箱直接崩溃!              
 echo =======================================================================================
 set /p apk=要安装的软件:
 if "%apk%"=="Q" (cls&goto input)
+for %%d in ("%apk%") do (set "sf=%%~xd")
+:if
+if "%sf%"==".apk" (goto installapk) else (goto notapk)
+:installapk
 chcp 65001
 %name%\apk\aapt.exe dump badging %apk% >%name%\stats\app.txt
 find "package: name=" %name%\stats\app.txt > %name%\stats\pname.txt
@@ -441,6 +473,13 @@ if "%iapk%"=="Q" (cls&goto input)
 pause
 cls
 goto 7
+:notapk
+cls
+echo                            ===========================================
+echo                            =          非APK文件,请重新选择           =
+echo                            ===========================================
+pause>nul
+cls & goto 7 
 :8
 echo  ==========================================================
 echo =        [1]获取当前软件包名   [2]获取所有包名            =
@@ -584,12 +623,14 @@ echo   ========================================
 echo =    当前工具箱模式!Config!                =
 echo =    [1]切换ADBMODE0(恢复默认5037端口)     =
 echo =    [2]切换ADBMODE1(端口为24986)          =
-echo =    [3]更新工具箱                         =
+echo =    [3]切换ADBMODE3(无线ADB调试)          =
+echo =    [4]更新工具箱                         =
 echo   ========================================
 set /p "choX=请选择一项并输入,输入Q退出:
 if "%choX%"=="1" cls & goto ADBPORTDEF
 if "%choX%"=="2" cls & goto ADBPORT24986
-if "%choX%"=="3" cls & goto update
+if "%choX%"=="3" cls & goto ADBPORTWIFI
+if "%choX%"=="4" cls & goto update
 if "%choX%"=="Q" cls & goto input
 echo. & echo 不能输入除了1-2和Q之外的其他字符！ & pause>nul & cls & goto :20
 :ADBPORTDEF
@@ -597,6 +638,7 @@ setlocal enabledelayedexpansion
 for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     set Config=%%Y
     set "Config=!Config:ADBMODE1=ADBMODE0!"
+    set "Config=!Config:ADBMODE3=ADBMODE0!"
     echo !Config!>>$
     move $ %name%\stats\Config.txt
 )
@@ -609,11 +651,25 @@ setlocal enabledelayedexpansion
 for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
     set Config=%%Y
     set "Config=!Config:ADBMODE0=ADBMODE1!"
+    set "Config=!Config:ADBMODE3=ADBMODE1!"
     echo !Config!>>$
     move $ %name%\stats\Config.txt
 )
 taskkill /f /IM adb.exe
 echo 设置24986端口成功,按任意键重启工具箱
+pause>nul
+start 点我使用.bat&exit
+:ADBPORTWIFI
+setlocal enabledelayedexpansion
+for /f "tokens=*" %%Y in (%name%\stats\Config.txt) do (
+    set Config=%%Y
+    set "Config=!Config:ADBMODE0=ADBMODE3!"
+    set "Config=!Config:ADBMODE1=ADBMODE3!"
+    echo !Config!>>$
+    move $ %name%\stats\Config.txt
+)
+taskkill /f /IM adb.exe
+echo 设置无线ADB调试成功,按任意键重启工具箱
 pause>nul
 start 点我使用.bat&exit
 :update
@@ -622,7 +678,7 @@ del %name%\stats\version.txt
 (echo 正在检查更新....)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/Version.txt)&(move Version.txt %name%\stats\)&cls
 for /f "tokens=*" %%A in (%name%\stats\Version.txt) do (
     set nver=%%A
-    if "!nver!"=="1.2.6" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
+    if "!nver!"=="1.2.8" (echo 当前版本已更新至最新,无需更新)&(echo 按任意键返回主界面)&(pause>nul)&(cls&goto input) else (echo 当前版本已过期,正在更新!)&(timeout /nobreak /t 2)&cls&(goto dupdate)
 )
 :dupdate
 (echo 下载更新脚本中...)&(wget -q --show-progress https://ghproxy.com/https://github.com/Tufmoc/Garbage/releases/download/W.Tools-bat/update.bat)&(if exist update.bat (goto doupdate&del version.txt) else (echo 文件不存在,正在重新下载!)&(cls&goto dupdate)
@@ -647,3 +703,13 @@ exit
 :22
 start %name%\adb\input.bat
 cls&goto input
+:23
+adb tcpip 2333
+echo ==============================================
+echo =                                            =
+echo =          已开启无线调试,端口号为2333       =
+echo =                                            =
+echo ==============================================
+echo 按任意键返回主界面
+pause>nul
+cls & goto input
