@@ -23,6 +23,7 @@ git clone https://github.com/Tufmoc/W.Tools-Ver.Bat.git
 ### 相关链接
 [Git](https://github.com/Tufmoc/Garbage)  
 [C#Version](https://github.com/FriendShip-Studio/W.Tools-Ver.C)  
+[PythonVersion](https://github.com/qiyuKEIOVE/W.Tools-Ver.Python3)  
 [Adb](https://developer.android.google.cn/studio/releases/platform-tools?hl=zh-cn)  
 [Wget](https://eternallybored.org/misc/wget/)  
 [7-zip](https://www.7-zip.org/)  
