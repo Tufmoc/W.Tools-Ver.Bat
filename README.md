@@ -20,6 +20,10 @@ git clone https://github.com/Tufmoc/W.Tools-Ver.Bat.git
 解决办法:放到无空格目录后再拖入工具箱
 
 ------
+软件主界面
+![QQ20220809161350.png](https://pic.6zs.cn/images/2022/08/09/QQ20220809161350.png)
+
+------
 ### 相关链接
 [Git](https://github.com/Tufmoc/Garbage)  
 [C#Version](https://github.com/FriendShip-Studio/W.Tools-Ver.C)  
