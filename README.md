@@ -21,7 +21,7 @@ git clone https://github.com/Tufmoc/W.Tools-Ver.Bat.git
 
 ------
 ## 软件主界面截图
-![QQ20220809161350.png](https://pic.6zs.cn/images/2022/08/09/QQ20220809161350.png)
+![QQ截图20220811182931.png](https://tva1.sinaimg.cn/large/007dtI85gy1h5308gml1uj30xv0hntig.jpg)
 
 ------
 ### 相关链接
